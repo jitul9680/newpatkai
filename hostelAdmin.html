@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<title>Hostel Administration</title>
+	<link rel="icon" href="images/patkai.png">
+	<meta charset = "utf-8">
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="maincss.css">
+	<style type="text/css">
+	 #tabs {
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#tabs li {
+  float: left;
+  margin: 0 .5em 0 0;
+}
+
+#tabs a {
+  position: relative;
+  background: #ddd;
+  background-image: linear-gradient(to bottom, #fff, #ddd);  
+  padding: .7em 3em;
+  float: left;
+  text-decoration: none;
+  color: #444;
+  text-shadow: 0 1px 0 rgba(255,255,255,.8);
+  border-radius: 5px 0 0 0;
+  box-shadow: 0 2px 2px rgba(0,0,0,.4);
+}
+
+#tabs a:hover,
+#tabs a:hover::after,
+#tabs a:focus,
+#tabs a:focus::after {
+  background: #fff;
+}
+
+#tabs a:focus {
+  outline: 0;
+}
+
+#tabs a::after {
+  content:'';
+  position:absolute;
+  z-index: 1;
+  top: 0;
+  right: -.5em;  
+  bottom: 0;
+  width: 1em;
+  background: #ddd;
+  background-image: linear-gradient(to bottom, #fff, #ddd);  
+  box-shadow: 2px 2px 2px rgba(0,0,0,.4);
+  transform: skew(10deg);
+  border-radius: 0 5px 0 0;  
+}
+
+#tabs #current a,
+#tabs #current a::after {
+  background: #fff;
+  z-index: 3;
+}
+
+#tabdiv {
+  background: #fff;
+  padding: 2em;
+  height: 100%;
+  position: relative;
+  z-index: 2; 
+  border-radius: 0 5px 5px 5px;
+  box-shadow: 0 -2px 3px -2px rgba(0, 0, 0, .5);
+}
+        
+        
+.background-image { z-index: -1; }
+.overlay-text { position: relative; top: -30px; left: 4px;  background-color: black; font-family:arial;color:white ;font-size:12px; wedth:310px;}
+      
+.background-image:hover img{
+    opacity:0.5;
+}	 
+	.style5
+        {
+            height: 105px;
+        } 
+        
+        .style9
+        {line-height: 20px;
+            height: 207px;
+        }
+        .style10
+        {
+            font-size: medium;
+        }
+        .style11
+        {
+            font-size: small;
+        }
+</style>
+</head>
+<body>
+
+	<div id="tooplate_header_wrapper">
+		<div id="tooplate_header" class="center">
+			<div style="float: left; margin-top: 80px; width: 25%;">
+     <a href="index.html"><img src="./images/patkai.png"></a>   
+      </div>
+			<div style="float: left; margin-top: 135px; font-size: 16px; width: 50%; text-align: center;">
+
+
+				<nav class="navbar navbar-expand navbar-light bg-light edit">
+    				<ul class="navbar-nav">
+      					<li class="nav-item">
+        					<a class="nav-link" href="index.html">Home </a>
+      					</li>
+      					<li class="nav-item active">
+        					<a class="nav-link" href="hostelAdmin.html">Hostel Admin<span class="sr-only">(current)</span></a>
+      					</li>
+      					<li class="nav-item">
+        					<a class="nav-link" href="gallery.html">Gallery</a>
+      					</li>
+      					<li class="nav-item">
+        					<a class="nav-link" href="boarderlist.html">Boarders</a>
+      					</li>
+      					<li class="nav-item">
+        					<a class="nav-link" href="achievement.html">Achievement</a>
+      					</li>
+    				</ul>
+    
+				</nav></div>
+		<div style="float: right; margin-top: 80px; width: 25%; text-align: right;">
+			<a href="http://www.tezu.ernet.in/"><img src="./images/tu_logo.png" style="margin-right: 40px;"></a>
+		</div>
+	</div>
+	</div>
+	<div id="tooplate_middle_wrapper">
+		<div id="tooplate_middle" class="center">
+    		<div class="ml12"  style="padding-top: 50px; display: block;"><p  style="font-size: 32px; text-align: center; color: #222; text-shadow: 1px 1px #777;">Welcome To</p><p class style="font-size: 45px; text-align: center; margin-top: 10px; color: #222; text-shadow: 1px 1px #777;">Patkai Men's Hostel</p></div>
+    </div>
+</div>
+	<div id="tooplate_main_wrapper">
+    <div class="wrapper row4">
+  <div id="container" class="clear">
+    <div >
+    <script src="jquery-3.3.1.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#tabdiv").find("[id^='tab']").hide(); // Hide all content
+        $("#tabs li:first").attr("id", "current"); // Activate the first tab
+        $("#tabdiv #tab1").fadeIn(); // Show first tab's content
+
+        $('#tabs a').click(function (e) {
+            e.preventDefault();
+            if ($(this).closest("li").attr("id") == "current") { //detection for current tab
+                return;
+            }
+            else {
+                $("#tabdiv").find("[id^='tab']").hide(); // Hide all content
+                $("#tabs li").attr("id", ""); //Reset id's
+                $(this).parent().attr("id", "current"); // Activate this
+                $('#' + $(this).attr('name')).fadeIn(); // Show content for the current tab
+            }
+        });
+    });
+</script>
+      <h1>Administration of Patkai Men's Hostel</h1>
+     
+     <ul id="tabs">
+    <li><a href="#" name="tab1">Warden</a></li>
+    <li><a href="#" name="tab2">Associate Warden</a></li>
+    <li><a href="#" name="tab3">Prefect</a></li>
+    <li><a href="#" name="tab4">Assistant Prefect</a></li>
+    <li><a href="#" name="tab5">Auditor</a></li>
+    <li><a href="#" name="tab6">Convenors</a></li>
+    <li><a href="#" name="tab7">Ofiice Staff</a></li>
+       
+</ul>
+
+<div id="tabdiv"> 
+    <div id="tab1">
+      <div >
+        <h2 class="title" >Warden</h2>
+        <div id="hpage_latestnews">
+        
+                <p class="style9" >
+                    <img src="profile/nabin.jpg" style="float:left;
+   margin-left:5px;
+   margin-bottom:10px;
+   margin-top:-2px;
+   margin-right:20px;
+    
+   padding: 3px 3px 3px 3px;
+   border-radius:5px;
+   background-color:#FFFFFF;
+   box-shadow:1px 1px 5px rgba(0,0,0,.5)" alt="" width="160" 
+                        height="160" /><span class="style10"><strong>Dr. Nabin Sarmah<br />
+                        </strong></span><span class="style11">Assistant Professor.<br />Department of Energy.<br />Tezpur University.</span><strong><span class="style10"><br />
+                        </span>
+                        </strong><span class="style11">Phone no: +91-8753008183 
+                          <br />
+                    E mail: <a href="mailto:nabin@tezu.ernet.in">nabin@tezu.ernet.in</a>,
+                  
+                          <br />web: 
+                          <a href="http://www.tezu.ernet.in/dener/people/Resume_Dr%20Nabin%20Sarmah.pdf" target='_blank'>Dr. Nabin Sarmah</a></span><strong><span class="style10"> </span>
+                        </strong></p>
+                      </div><h2 class="title">Former Warden: </h2>
+					  <h1>Dr. S.S. Bhattacharya</h1>
+
+      </div>
+    </div>
+    <div id="tab2">
+         <div >  <div id="Div1">
+         
+                  <h2 class="title">
+                      Associate Warden</h2>
+                  <div class="box">
+                      <div  align="left">
+                <p class="style9" >
+                    <img src="profile/sushen.jpg" style="float:left;
+   margin-left:5px;
+   margin-bottom:10px;
+   margin-top:-2px;
+   margin-right:20px;
+    
+   padding: 3px 3px 3px 3px;
+   border-radius:5px;
+   background-color:#FFFFFF;
+   box-shadow:1px 1px 5px rgba(0,0,0,.5)" alt="" width="160" 
+                        height="160" /><span class="style10"><strong>Dr. Sushen Kirtania<br />
+                        </strong></span><span class="style11">Assistant Professor.<br />Department of Mechanical Engineering.<br />Tezpur University.</span><strong><span class="style10"><br />
+                        </span>
+                        </strong><span class="style11">Phone no: +91-9954604524 
+                          <br />
+                    E mail: <a href="mailto:sushen@tezu.ernet.in">sushen@tezu.ernet.in</a>,
+                  
+                          <br />web: 
+                          <a href="http://www.tezu.ernet.in/dmech/people/New_Faculty_Details/SK1/index.html" target='_blank'>Dr. Sushen Kirtania</a></span><strong><span class="style10"> </span>
+                        </strong></p>
+                      </div>
+                        <div  align="left">
+                <p class="style9" >
+                    <img src="profile/dseth.jpg" style="float:left;
+   margin-left:5px;
+   margin-bottom:10px;
+   margin-top:-2px;
+   margin-right:20px;
+    
+   padding: 3px 3px 3px 3px;
+   border-radius:5px;
+   background-color:#FFFFFF;
+   box-shadow:1px 1px 5px rgba(0,0,0,.5)" alt="" width="160" 
+                        height="160" /><span class="style10"><strong>Dr. Dibyakanta Seth<br />
+                        </strong></span><span class="style11">Assistant Professor.<br />Department of Food Engineering and Technology.<br />Tezpur University.</span><strong><span class="style10"><br />
+                        </span>
+                        </strong><span class="style11">Phone no: +91-8638149314 
+                          <br />
+                    E mail: <a href="mailto:dibya05@tezu.ernet.in">dibya05@tezu.ernet.in</a>,
+                  
+                          <br />web: 
+                          <a href="http://www.tezu.ernet.in/dfpt/" target='_blank'>Dr. Dibyakanta Seth</a></span><strong><span class="style10"> </span>
+                        </strong></p>
+                      </div>
+					  <h2 class="title">Former Associate Warden:</h2>
+					  <h1>...</h1>
+					  <h1>...</h1>
+					 <h1>...</h1>
+
+                  </div>
+
+          </div>
+      </div>                      
+    </div>
+    <div id="tab3">
+    
+    
+                             <div >  <div id="Div2">
+         
+                  <h2 class="title">
+                      Prefect</h2>
+                  <div class="box">
+                      <div  align="left">
+                <p class="style9" >
+                    <img src="profile/bitupan.jpg" style="float:left;
+   margin-left:5px;
+   margin-bottom:10px;
+   margin-top:-2px;
+   margin-right:20px;
+    
+   padding: 3px 3px 3px 3px;
+   border-radius:5px;
+   background-color:#FFFFFF;
+   box-shadow:1px 1px 5px rgba(0,0,0,.5)" alt="" width="160" 
+                        height="160" /><span class="style10"><strong>Mr. Bitopan Das<br />
+                        </strong></span><span class="style11">Prefect.<br />Patkai Men's Hostel ( Room No : ... )<br />Department Of Commerce<br/>Tezpur University.</span><strong><span class="style10"><br />
+                        </span>
+                        </strong><span class="style11">Phone no: +91-8638115413</span>
+                          <br />
+                     </p>
+                      </div><h2 class="title">Former Prefects:</h2>
+					  <h1>Mr. Padum Chetry [2018-2019]</h1>
+					  <h1>Mr. Madhab Gogoi  [2017-2018]</h1>
+            <h1>Mr. Emon Goswami [2016-2017]</h1>
+
+                  </div>
+
+          </div>
+      </div>
+    
+    
+    
+    </div>
+    <div id="tab4">
+                                        
+      
+
+                                                <div >  <div id="Div2">
+         
+                  <h2 class="title">
+                     Assistant Prefect</h2>
+                  <div class="box">
+                      <div  align="left">
+                <p class="style9" >
+                    <img src="profile/pradipta.jpg" style="float:left;
+   margin-left:5px;
+   margin-bottom:10px;
+   margin-top:-2px;
+   margin-right:20px;
+    
+   padding: 3px 3px 3px 3px;
+   border-radius:5px;
+   background-color:#FFFFFF;
+   box-shadow:1px 1px 5px rgba(0,0,0,.5)" alt="" width="160" 
+                        height="160" /><span class="style10"><strong>Mr. Pradipta Kalita<br />
+                        </strong></span><span class="style11">Assistant Prefect.<br />Patkai Men's Hostel ( Room No : ... )<br />Department Of Physics<br/>Tezpur University.</span><strong><span class="style10"><br />
+                        </span>
+                        </strong><span class="style11">Phone no: +91-9132250829</span>
+                          <br />
+                     </p>
+                      </div>
+                        <div  align="left">
+                <p class="style9" >
+                    <img src="profile/bibek.jpg" style="float:left;
+   margin-left:5px;
+   margin-bottom:10px;
+   margin-top:-2px;
+   margin-right:20px;
+    
+   padding: 3px 3px 3px 3px;
+   border-radius:5px;
+   background-color:#FFFFFF;
+   box-shadow:1px 1px 5px rgba(0,0,0,.5)" alt="" width="160" 
+                        height="160" /><span class="style10"><strong>Mr. Bibek Sarma<br />
+                        </strong></span><span class="style11">Assistant Prefect.<br />Patkai Men's Hostel ( Room No : ... )<br />Department Of Electronics and Communication Engineering<br/>Tezpur University.</span><strong><span class="style10"><br />
+                        </span>
+                        </strong><span class="style11">Phone no: +91-9101037231</span>
+                          <br />
+                     </p>
+                      </div>
+                        <div  align="left">
+                <p class="style9" >
+                    <img src="profile/ama.jpg" style="float:left;
+   margin-left:5px;
+   margin-bottom:10px;
+   margin-top:-2px;
+   margin-right:20px;
+    
+   padding: 3px 3px 3px 3px;
+   border-radius:5px;
+   background-color:#FFFFFF;
+   box-shadow:1px 1px 5px rgba(0,0,0,.5)" alt="" width="160" 
+                        height="160" /><span class="style10"><strong>Mr. Amar Jyoti Saikia<br />
+                        </strong></span><span class="style11">Assistant Prefect.<br />Patkai Men's Hostel ( Room No : ... )<br />Department Of Commerce<br/>Tezpur University.</span><strong><span class="style10"><br />
+                        </span>
+                        </strong><span class="style11">Phone no: +91-7399602658</span>
+                          <br />
+                     </p>
+                      </div>
+                        <div  align="left">
+                <p class="style9" >
+                    <img src="profile/pranav.jpg" style="float:left;
+   margin-left:5px;
+   margin-bottom:10px;
+   margin-top:-2px;
+   margin-right:20px;
+    
+   padding: 3px 3px 3px 3px;
+   border-radius:5px;
+   background-color:#FFFFFF;
+   box-shadow:1px 1px 5px rgba(0,0,0,.5)" alt="" width="160" 
+                        height="160" /><span class="style10"><strong>Mr. Pranav Rawani<br />
+                        </strong></span><span class="style11">Assistant Prefect.<br />Patkai Men's Hostel ( Room No : ... )<br />Department Of Civil Engineering<br/>Tezpur University.</span><strong><span class="style10"><br />
+                        </span>
+                        </strong><span class="style11">Phone no: +91-9399423806</span>
+                          <br />
+                     </p>
+                      </div>
+                      <h2 class="title">Former Assistant Prefects:</h2>
+            <h1>Mr. Imdad Ahmed[2018-19]</h1>
+            <h1>Mr. Pranjal Choudhuri[2018-19]</h1>
+            <h1>Mr. Mridul Mohan Sarania[2018-19]</h1>
+
+                  </div>
+
+          </div>
+      </div>
+    
+    </div>
+    <div id="tab5">
+
+           <div >  <div id="Div2">
+         
+                  <h2 class="title">
+                      Auditor</h2>
+                  <div class="box">
+                      <div  align="left">
+                <p class="style9" >
+                    <img src="profile/jitul.jpg" style="float:left;
+   margin-left:5px;
+   margin-bottom:10px;
+   margin-top:-2px;
+   margin-right:20px;
+    
+   padding: 3px 3px 3px 3px;
+   border-radius:5px;
+   background-color:#FFFFFF;
+   box-shadow:1px 1px 5px rgba(0,0,0,.5)" alt="" width="160" 
+                        height="160" /><span class="style10"><strong>Mr. Jitul Rajbongshi<br />
+                        </strong></span><span class="style11">Auditor.<br />Patkai Men's Hostel ( Room No : ... )<br />Department Of Computer Science and Engineering<br/>Tezpur University.</span><strong><span class="style10"><br />
+                        </span>
+                        </strong><span class="style11">Phone no: +91-8011883175</span>
+                          <br />
+                     </p>
+                      </div><h2 class="title">Former Auditor:</h2>
+            <h1>Mr. Bitupan Das [2018-2019(present prefect)]</h1>
+
+                  </div>
+
+          </div>
+      </div>
+    
+</div>
+<div id="tab6">
+
+           <div >  <div id="Div2">
+         
+                  <h2 class="title">
+                      Convenors</h2>
+                  <div class="box">
+                      <div  align="left">
+                <p class="style9" >
+                    <img src="profile/angshuman.jpg" style="float:left;
+   margin-left:5px;
+   margin-bottom:10px;
+   margin-top:-2px;
+   margin-right:20px;
+    
+   padding: 3px 3px 3px 3px;
+   border-radius:5px;
+   background-color:#FFFFFF;
+   box-shadow:1px 1px 5px rgba(0,0,0,.5)" alt="" width="160" 
+                        height="160" /><span class="style10"><strong>Mr. Angshuman Aich<br />
+                        </strong></span><span class="style11">Mess Convenor.<br />Patkai Men's Hostel ( Room No : ... )<br />Department Of Chemistry<br/>Tezpur University.</span><strong><span class="style10"><br />
+                        </span>
+                        </strong><span class="style11">Phone no: +91-8399025610</span>
+                          <br />
+                     </p>
+                   </div>
+                   <div  align="left">
+                       <p class="style9" >
+                    <img src="profile/dhritishman.jpg" style="float:left;
+   margin-left:5px;
+   margin-bottom:10px;
+   margin-top:-2px;
+   margin-right:20px;
+    
+   padding: 3px 3px 3px 3px;
+   border-radius:5px;
+   background-color:#FFFFFF;
+   box-shadow:1px 1px 5px rgba(0,0,0,.5)" alt="" width="160" 
+                        height="160" /><span class="style10"><strong>Mr. Dhritishman Das<br />
+                        </strong></span><span class="style11">Sports and Cultural Convenor.<br />Patkai Men's Hostel ( Room No : ... )<br />Department Of Food Engineering Technology<br/>Tezpur University.</span><strong><span class="style10"><br />
+                        </span>
+                        </strong><span class="style11">Phone no: +91-8133089140</span>
+                          <br />
+                     </p>
+                      </div><h2 class="title">Former Convenors:</h2>
+            <h1>Mr. Prince Prasad [2018-19(Mess Convenor)]</h1>
+            <h1>Mr. Gayakawada Ramanjaneyulu [2018-19(Assistant Mess Convenor)]</h1>
+            <h1>Mr. Amarjyoti Deka [2018-19(Sports and Cultural Convenor)]</h1>
+                  </div>
+
+          </div>
+      </div>
+</div>
+<div id="tab7">
+
+<h2>Caretaker : Mr. Pankaj Kr. Nath </h2>
+<h2>Security : Mr. Kundan Chetry</h2>
+<h2>Security : Mr. Rajesh Chetry</h2></div>
+    </div>
+    
+    <!-- ####################################################################################################### -->
+    <div class="clear"></div>
+ </div>
+</div>
+</div>
+</div>
+<div id="tooplate_footer_wrapper">
+    <div id="tooplate_footer" class="center">
+         <div class="col_25">
+            <h4 style="margin-bottom: 10px;"></h4>
+            <div class="news_list">
+                <p style ="color: black"><br>Patkai boarders help each other to enlighten ourselves with specialized knowledge and lay the foundation for a bright future</p>
+            </div>            
+            <div class="news_list" style="padding-top: 10px;">
+                <p style="color: black"><strong><span style="font-size: 12px;">সংলাপ</span></strong><br><span style="font-size: 11px;">আমাৰ আগত কোনো নাই পাতকাই পাতকাই</span></p>
+            </div>          
+                  
+        </div>
+        <div class="col_25 no_margin_right">
+            <div class="content_wrapper content_mb_30">
+                <h4>Developer</h4>
+                <img src="images/jitul.jpg" alt="Image" class="img_fl img_border img_border_s">
+                <p style="color: black">Jitul Rajbongshi<br>
+                Department of CSE,</p>
+                <p style="color:black" >☎ 8011883175<br>✉ jitulrajbongshi@gmail.com</p>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+  <p style="margin-left: 30%">[Copyright &copy Patkai Men's Hostel, Tezpur University 2019 | All Rights Reserved |]</p>
+</footer>
+
+  <script
+        src="jquery-3.3.1.js"> </script>
+    <script src="bootstrap.min.js"></script>
+</body>
+
+</html>
